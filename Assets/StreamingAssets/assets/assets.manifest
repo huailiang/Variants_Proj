@@ -1,0 +1,15 @@
+ManifestFileVersion: 0
+CRC: 919383863
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: cube
+      Dependencies:
+        Dependency_0: dc_multicompile
+    Info_1:
+      Name: dc_multicompile
+      Dependencies:
+        Dependency_0: dc/multicompile
+    Info_2:
+      Name: dc/multicompile
+      Dependencies: {}

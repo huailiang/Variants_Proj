@@ -11,7 +11,14 @@ public class MultiCompile : MonoBehaviour
     private void Start()
     {
         Analy();
-        LoadCube();
+    }
+
+    void OnGUI()
+    {
+        if (GUI.Button(new Rect(20,20,200,100),"Load"))
+        {
+            LoadCube();
+        }
     }
 
     private void Analy()

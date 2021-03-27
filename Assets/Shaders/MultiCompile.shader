@@ -22,6 +22,7 @@
 
 				
 				#include "UnityCG.cginc"
+				#include "common.cginc"
 
 				struct appdata
 				{
@@ -48,17 +49,17 @@
 
 				fixed4 frag(v2f i) : SV_Target
 				{
-
+					const node n = getScale(1);
 					#if DB_ON
-						return fixed4(1,1,0,1);
+						return fixed4(1,1,0,1) * n.scale;
 					#elif _CL_R
-						return fixed4(1,0,0,1);
+						return fixed4(1,0,0,1) * n.scale;
 					#elif _CL_G
-						return fixed4(0,1,0,1);
+						return fixed4(0,1,0,1) * n.scale;
 					#elif _CL_B
-						return fixed4(0,0,1,1);
+						return fixed4(0,0,1,1) * n.scale;
 					#else
-						return fixed4(1,1,1,1);
+						return fixed4(1,1,1,1) * n.scale;
 					#endif
 				}
 				ENDCG

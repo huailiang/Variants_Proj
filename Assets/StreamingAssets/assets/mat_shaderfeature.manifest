@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1898670029
+CRC: 2937443574
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5ce90cfe78135f7516ab94171249b0b9
+    Hash: fb0e2e415fe075b1022b71b9f80117b5
   TypeTreeHash:
     serializedVersion: 2
     Hash: 10a6a558690295dadb3dd990eda0821a
@@ -13,7 +13,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Res/DC_MultiCompile.mat
+- Assets/Res/Mat_ShaderFeature.mat
 Dependencies:
-- E:/unity/TestProject/Assets/StreamingAssets/assets/dc/multicompile
+- /Users/huailiang.peng/Documents/unity/Variants_Proj/Assets/StreamingAssets/assets/dc/shaderfeature

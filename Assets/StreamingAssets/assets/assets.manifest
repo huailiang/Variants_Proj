@@ -1,15 +1,26 @@
 ManifestFileVersion: 0
-CRC: 919383863
+CRC: 3703346787
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: cube
-      Dependencies:
-        Dependency_0: dc_multicompile
+      Name: dc/shaderfeature
+      Dependencies: {}
     Info_1:
-      Name: dc_multicompile
-      Dependencies:
-        Dependency_0: dc/multicompile
-    Info_2:
       Name: dc/multicompile
       Dependencies: {}
+    Info_2:
+      Name: cubefeature
+      Dependencies:
+        Dependency_0: mat_shaderfeature
+    Info_3:
+      Name: cubemulticompile
+      Dependencies:
+        Dependency_0: mat_multicompile
+    Info_4:
+      Name: mat_multicompile
+      Dependencies:
+        Dependency_0: dc/multicompile
+    Info_5:
+      Name: mat_shaderfeature
+      Dependencies:
+        Dependency_0: dc/shaderfeature

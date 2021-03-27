@@ -6,7 +6,7 @@ public class MultiCompile : MonoBehaviour
 {
     private AssetBundleManifest manifest;
 
-    private Dictionary<string,Object> hash = new Dictionary<string, Object>();
+    private readonly Dictionary<string,Object> hash = new Dictionary<string, Object>();
 
     private void Start()
     {
@@ -51,8 +51,23 @@ public class MultiCompile : MonoBehaviour
 
     private void LoadCube()
     {
-        var obj = LoadDep("cube");
+        Vector3 pos = Vector3.zero;
+        var obj = LoadDep("cubefeature");
         var go = GameObject.Instantiate(obj);
-        go.name = "cube...";
+        go.name = "cube feature...";
+        pos.x = -2;
+        SetPos(go, pos);
+
+        obj = LoadDep("cubemulticompile");
+        go = GameObject.Instantiate(obj);
+        go.name = "cube multi compile...";
+        pos.x = 2;
+        SetPos(go, pos);
+    }
+
+    private void SetPos(Object obj, Vector3 pos)
+    {
+        GameObject go = obj as GameObject;
+        go.transform.position = pos;
     }
 }

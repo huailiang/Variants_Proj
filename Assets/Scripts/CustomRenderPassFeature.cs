@@ -22,7 +22,7 @@ public class CustomRenderPassFeature : ScriptableRendererFeature
     class CustomRenderPass : ScriptableRenderPass
     {
         public int soildColorID = 0;
-        public ShaderTagId shaderTag = new ShaderTagId("UniversalForward");
+        public readonly ShaderTagId shaderTag = new ShaderTagId("UniversalForward");
         public Setting setting;
 
         FilteringSettings filtering;

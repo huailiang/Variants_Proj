@@ -8,7 +8,7 @@ ShaderVariantCollection:
   m_PrefabAsset: {fileID: 0}
   m_Name: MultiShaderVariants
   m_Shaders:
-  - first: {fileID: 4800000, guid: 363fb98a25f9c604f86610b7de399642, type: 3}
+  - first: {fileID: 4800000, guid: d8ac1650bd141459387046e2ed835f43, type: 3}
     second:
       variants:
       - keywords: DB_ON _CL_R

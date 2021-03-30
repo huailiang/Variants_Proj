@@ -6,12 +6,11 @@ public class BuildBundle
 {
 
     internal const string dir = "Assets/StreamingAssets/assets";
-
-    [MenuItem("Assets/Build Bundle")]
-    static void XBuildBundle()
+    
+    static void XBuildBundle(bool mat)
     {
         CleanOld();
-        BuildShader.InnerBuildShader();
+        
         
         var objs = Selection.objects;
         List<AssetBundleBuild> builds = new List<AssetBundleBuild>();
@@ -23,11 +22,23 @@ public class BuildBundle
             build.assetNames = new string[] { pat };
             builds.Add(build);
         }
-
+        builds.Add(BuildShader.InnerBuildShader(mat));
         var option = BuildAssetBundleOptions.ChunkBasedCompression | BuildAssetBundleOptions.DeterministicAssetBundle;
         BuildPipeline.BuildAssetBundles(dir, builds.ToArray(), option, EditorUserBuildSettings.activeBuildTarget);
         
         FinishEditor();
+    }
+
+    [MenuItem("Assets/Build Bundle - Mat Join")]
+    static void XBuildBundle1()
+    {
+        XBuildBundle(true);
+    }
+    
+    [MenuItem("Assets/Build Bundle - Mat Sep")]
+    static void XBuildBundle2()
+    {
+        XBuildBundle(false);
     }
 
     private static void CleanOld()

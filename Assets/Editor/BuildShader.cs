@@ -20,7 +20,7 @@ public class BuildShader
         BuildBundle.FinishEditor();
     }
 
-    internal static void InnerBuildShader()
+    internal static AssetBundleBuild InnerBuildShader(bool containsMat)
     {
         var shaderDir = "Assets/Shaders/";
         DirectoryInfo directoryInfo = new DirectoryInfo(shaderDir);
@@ -28,11 +28,21 @@ public class BuildShader
         List<string> names = new List<string>();
         foreach (var file in files)
         {
-            Debug.Log(file.Name);
             names.Add(shaderDir + file.Name);
         }
 
-        InnerBuildShader(names.ToArray());
+        if (containsMat)
+        {
+            var matDir = "Assets/Res/";
+            directoryInfo = new DirectoryInfo(matDir);
+            files = directoryInfo.GetFiles("*.mat");
+            foreach (var file in files)
+            {
+                names.Add(matDir + file.Name);
+            }
+        }
+
+        return new AssetBundleBuild {assetBundleName = "shader", assetNames = names.ToArray()};
     }
 
     internal static void InnerBuildShader(string[] names)

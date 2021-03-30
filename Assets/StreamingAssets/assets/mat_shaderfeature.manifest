@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2937443574
+CRC: 2725846020
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b96c85f6b3eaa23a464907e6f5031894
+    Hash: 454bc4d7d9c7162d709630301dd7d5aa
   TypeTreeHash:
     serializedVersion: 2
     Hash: 10a6a558690295dadb3dd990eda0821a
@@ -17,4 +17,4 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Res/Mat_ShaderFeature.mat
 Dependencies:
-- /Users/huailiang.peng/Documents/unity/Variants_Proj/Assets/StreamingAssets/assets/dc/shaderfeature
+- /Users/huailiang.peng/Documents/unity/Variants_Proj/Assets/StreamingAssets/assets/shader

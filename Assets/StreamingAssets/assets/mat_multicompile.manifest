@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2494483358
+CRC: 1422189538
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d632dd3aafcb86011aa2a054361746c5
+    Hash: b377bfa29322f8055875697e8e4aee5d
   TypeTreeHash:
     serializedVersion: 2
     Hash: 10a6a558690295dadb3dd990eda0821a
@@ -17,4 +17,4 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Res/Mat_MultiCompile.mat
 Dependencies:
-- /Users/huailiang.peng/Documents/unity/Variants_Proj/Assets/StreamingAssets/assets/dc/multicompile
+- /Users/huailiang.peng/Documents/unity/Variants_Proj/Assets/StreamingAssets/assets/shader

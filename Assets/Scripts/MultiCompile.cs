@@ -19,15 +19,6 @@ public class MultiCompile : MonoBehaviour
         {
             LoadCube();
         }
-        if (GUI.Button(new Rect(20,140,200,100),"SVC"))
-        {
-            var pat = Path.Combine(Application.streamingAssetsPath, "assets/MultiShaderVariants");
-            var b = AssetBundle.LoadFromFile(pat);
-            var svc=b.LoadAsset<ShaderVariantCollection>("MultiShaderVariants");
-            Debug.Log("1. variant count:" + svc.variantCount + " shader count:" + svc.shaderCount);
-            svc.WarmUp();
-            Debug.Log("2. variant count:" + svc.variantCount + " shader count:" + svc.shaderCount);
-        }
     }
 
     private void Analy()

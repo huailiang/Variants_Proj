@@ -40,6 +40,7 @@ public class VariantsTest : MonoBehaviour
         var b = AssetBundle.LoadFromFile(pat);
         var svc = b.LoadAsset<ShaderVariantCollection>("MultiShaderVariants");
         svc.WarmUp();
+        
         // svc的WarmUp就会触发相关Shader的预编译，触发预编译之后再加载Shader Asset即可
         // var shaders = b.LoadAllAssets<Shader>();
         // foreach (var shader in shaders)

@@ -92,3 +92,10 @@ Profiler.EndSample();
 
 
 ![](.github/var3.jpg)
+
+
+#### 建议
+
+写一个uber shader, 最终出包时不要有 Material, 通过自己定义的 bytes 文件来记录材质参数（贴图路径、颜色等），Shader 和 SVC 打包到同一个Assetsbundle 中。 
+
+运行时 new 一个使用uber shader的Material（或者 MaterialPropertyBlock), 读取 bytes 文件里参数初始化 Material， 然后通过 keyword 来开启不同的效果和算法。

@@ -46,13 +46,11 @@ public class VariantsTest : MonoBehaviour
         // {
         //     Debug.Log("shader: " + shader.name);
         // }
-
         var mats = b.LoadAllAssets<Material>();
         foreach (var mat in mats)
         {
             Debug.Log("mat: " + mat.name);
         }
-
         // b.Unload(false);
     }
 

@@ -11,7 +11,6 @@ public class BuildBundle
     {
         CleanOld();
         
-        
         var objs = Selection.objects;
         List<AssetBundleBuild> builds = new List<AssetBundleBuild>();
         foreach (var it in objs)

@@ -18,3 +18,7 @@ ShaderVariantCollection:
       variants:
       - keywords: _CL_G
         passType: 0
+      - keywords: _CL_B
+        passType: 0
+      - keywords: DB_ON _CL_B
+        passType: 0

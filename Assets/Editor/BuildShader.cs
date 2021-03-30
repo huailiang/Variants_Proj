@@ -1,16 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
+using UnityEngine;
 
-public class BuildShader 
+public class BuildShader
 {
-
     [MenuItem("Assets/Build Shader")]
-    static void XBuildShader()
+    internal static void XBuildShader()
     {
         var objs = Selection.objects;
-        List<AssetBundleBuild> builds = new List<AssetBundleBuild>();
-        AssetBundleBuild build = new AssetBundleBuild();
-        build.assetBundleName = "shader";
         List<string> names = new List<string>();
         foreach (var it in objs)
         {
@@ -18,14 +16,32 @@ public class BuildShader
             names.Add(pat);
         }
 
-        build.assetNames = names.ToArray();
-        builds.Add(build);
+        InnerBuildShader(names.ToArray());
+        BuildBundle.FinishEditor();
+    }
 
+    internal static void InnerBuildShader()
+    {
+        var shaderDir = "Assets/Shaders/";
+        DirectoryInfo directoryInfo = new DirectoryInfo(shaderDir);
+        var files = directoryInfo.GetFiles("*.shader*");
+        List<string> names = new List<string>();
+        foreach (var file in files)
+        {
+            Debug.Log(file.Name);
+            names.Add(shaderDir + file.Name);
+        }
+
+        InnerBuildShader(names.ToArray());
+    }
+
+    internal static void InnerBuildShader(string[] names)
+    {
+        List<AssetBundleBuild> builds = new List<AssetBundleBuild>();
+        AssetBundleBuild build = new AssetBundleBuild {assetBundleName = "shader", assetNames = names};
+        builds.Add(build);
         var option = BuildAssetBundleOptions.ChunkBasedCompression | BuildAssetBundleOptions.DeterministicAssetBundle;
-        BuildPipeline.BuildAssetBundles(BuildBundle.dir, builds.ToArray(), option, EditorUserBuildSettings.activeBuildTarget);
-        EditorUtility.ClearProgressBar();
-        AssetDatabase.RemoveUnusedAssetBundleNames();
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
+        BuildPipeline.BuildAssetBundles(BuildBundle.dir, builds.ToArray(), option,
+            EditorUserBuildSettings.activeBuildTarget);
     }
 }

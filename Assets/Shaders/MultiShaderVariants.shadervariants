@@ -15,3 +15,10 @@ ShaderVariantCollection:
         passType: 0
       - keywords: DB_ON _CL_G
         passType: 0
+  - first: {fileID: 4800000, guid: 5dfeba229dc8540a59b55d01b9040565, type: 3}
+    second:
+      variants:
+      - keywords: _CL_G
+        passType: 0
+      - keywords: DB_ON _CL_G
+        passType: 0

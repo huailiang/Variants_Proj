@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2494483358
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d632dd3aafcb86011aa2a054361746c5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 10a6a558690295dadb3dd990eda0821a
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Res/Mat_MultiCompile.mat
+Dependencies:
+- /Users/huailiang.peng/Documents/unity/Variants_Proj/Assets/StreamingAssets/assets/dc/multicompile

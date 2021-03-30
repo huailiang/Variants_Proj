@@ -11,7 +11,8 @@ public class BuildBundle
     static void XBuildBundle()
     {
         CleanOld();
-
+        BuildShader.InnerBuildShader();
+        
         var objs = Selection.objects;
         List<AssetBundleBuild> builds = new List<AssetBundleBuild>();
         foreach (var it in objs)
@@ -25,10 +26,8 @@ public class BuildBundle
 
         var option = BuildAssetBundleOptions.ChunkBasedCompression | BuildAssetBundleOptions.DeterministicAssetBundle;
         BuildPipeline.BuildAssetBundles(dir, builds.ToArray(), option, EditorUserBuildSettings.activeBuildTarget);
-        EditorUtility.ClearProgressBar();
-        AssetDatabase.RemoveUnusedAssetBundleNames();
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
+        
+        FinishEditor();
     }
 
     private static void CleanOld()
@@ -37,6 +36,13 @@ public class BuildBundle
             Directory.Delete(dir, true);
         Directory.CreateDirectory(dir);
         AssetDatabase.ImportAsset(dir);
+    }
+    
+    internal static void FinishEditor()
+    {
+        AssetDatabase.RemoveUnusedAssetBundleNames();
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
     }
 
 }

@@ -1,44 +1,54 @@
 ﻿using UnityEngine;
 using System.IO;
-using UnityEngine.Rendering;
+using UnityEngine.Profiling;
 
 public class VariantsTest : MonoBehaviour
 {
     private AssetBundleManifest manifest;
 
-    private void Start()
+    private string prefix
     {
-        Analy();
-        LoadCube();
+        get { return Path.Combine(Application.streamingAssetsPath, "assets"); }
     }
 
-    private void Analy()
+    void OnGUI()
     {
-        Debug.Log("hello world");
-        var pat = Path.Combine(Application.streamingAssetsPath, "assets/assets");
-        AssetBundle manifestBundle = AssetBundle.LoadFromFile(pat);
-        manifest = (AssetBundleManifest) manifestBundle.LoadAsset("AssetBundleManifest");
+        if (GUI.Button(new Rect(20, 20, 200, 100), "LoadVariants"))
+        {
+            Profiler.BeginSample("LoadVariants");
+            LoadVariants();
+            Profiler.EndSample();
+        }
+    }
 
-        var assets = manifest.GetAllAssetBundles();
-        int len = assets.Length;
-        Debug.Log("assets count: " + len);
-        for (int i = 0; i < len; i++)
-            Debug.Log("it" + i + ": " + assets[i]);
+    private void LoadVariants()
+    {
+        var pat = Path.Combine(prefix, "shader");
+        var b = AssetBundle.LoadFromFile(pat);
+        var svc = b.LoadAsset<ShaderVariantCollection>("MultiShaderVariants");
+        svc.WarmUp();
+        // svc的WarmUp就会触发相关Shader的预编译，触发预编译之后再加载Shader Asset即可
+        var shaders = b.LoadAllAssets<Shader>();
+        foreach (var shader in shaders)
+        {
+            Debug.Log("shader: " + shader.name);
+        }
+        b.Unload(false);
+        LoadCube();
     }
 
 
     private void LoadCube()
     {
-        var pat = Path.Combine(Application.streamingAssetsPath, "assets/shader");
+        var pat = Path.Combine(prefix, "mat_multicompile" );
         var b = AssetBundle.LoadFromFile(pat);
-
-        var svc = b.LoadAsset<ShaderVariantCollection>("MultiShaderVariants");
-        svc.WarmUp();
-        Debug.Log("svc: " + svc.name);
-        var shader = b.LoadAsset<Shader>("MultiCompile");
-        Debug.Log("shader: " + shader.name);
-
-        string[] keywords = new[] {"DB_ON _CL_R", "DB_ON _CL_G"};
-        svc.Add(new ShaderVariantCollection.ShaderVariant(shader, PassType.Vertex, keywords));
+        b.LoadAsset("mat_multicompile");
+        pat = Path.Combine(prefix, "cubemulticompile" );
+        b.Unload(false);
+        b  = AssetBundle.LoadFromFile(pat);
+        var obj = b.LoadAsset<GameObject>("cubemulticompile");
+        var go = GameObject.Instantiate(obj);
+        go.name = "cubemulticompile...";
+        b.Unload(false);
     }
 }

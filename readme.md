@@ -9,9 +9,9 @@
 
 将SVC和shader打入一个Shader AssetBundle。将材质打成Material AssetBundle.
 
-运行时加载ShaderAB，取SVC，WarmUp，再加载MaterialAB。
+运行时加载Shader AssetBundle，取SVC，WarmUp，再加载Material AssetBundle。
 
-对应到 [例子][i6] 中 variants 的场景中， 先选中两个 prefab 和 material， 右键 点击生成 BuildBundle - Mat Sep,在 StreamingAssets 目录下，可以看见生成的 bundle.
+对应到 variants 的场景中， 先选中两个 prefab 和 material， 右键 点击生成 BuildBundle - Mat Sep,在 StreamingAssets 目录下，可以看见生成的 bundle.
 
 
 ![](.github/var1.jpg)
@@ -78,7 +78,7 @@ SVC 中 只开启了 绿色
 
 SVC、shader和Material打成一个包。
 
-依旧是 [例子][i6] 中 variants 的场景中， 此次只选中两个 prefab， 右键 点击生成 BuildBundle - Mat Join, Material 就会和 shader/SVC 打到一个 Bundle 中。运行时我们不再单独加载 Material：
+依旧是 variants 的场景中， 此次只选中两个 prefab， 右键 点击生成 BuildBundle - Mat Join, Material 就会和 shader/SVC 打到一个 Bundle 中。运行时我们不再单独加载 Material：
 
 ```csharp
 Profiler.BeginSample("LoadVariants");
@@ -89,3 +89,6 @@ Profiler.EndSample();
 ```
 
 此次我们看到 无论 shader_feature 对应的 variant 是否对应在 svc中， 则表现都正确。坏处就是所有的资源都关联在一个 bundle 中了。
+
+
+![](.github/var3.jpg)

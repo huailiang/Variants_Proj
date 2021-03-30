@@ -1,6 +1,6 @@
 ### 测试shader和variants打bundle
 
-
+这里使用的 Unity 版本是 2019.4
 
 #### 测试案例一：
 
@@ -52,7 +52,7 @@ SVC 中 只开启了 绿色
         svc.WarmUp();
         // svc的WarmUp就会触发相关Shader的预编译，触发预编译之后再加载Shader Asset即可
         // b.LoadAllAssets<Shader>();
-		b.LoadAllAssets<Material>();
+        b.LoadAllAssets<Material>();
     }
 
     private void LoadMat(string mat)
